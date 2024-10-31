@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
-<script>
-    Weglot.initialize({
-        api_key: 'wg_1d3ae77b9fb17022ebe11fb12e2e5f560'
-    });
-</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,12 +62,30 @@
       text-align: center;
     }
 
+    .new-section {
+      background: #e8f8f5;
+      padding: 1rem;
+      margin-top: 2rem;
+      text-align: center;
+      border: 1px solid #d4efdf;
+    }
+
     footer {
       background: #333;
       color: #fff;
       text-align: center;
       padding: 1rem 0;
       margin-top: 2rem;
+    }
+
+    .btn-add-section {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      margin-top: 1rem;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -97,7 +109,7 @@
   <section class="hero">
     <h1>Welcome to Our Landing Page</h1>
     <p>Your journey to greatness starts here!</p>
-    <a href="#contact" style="padding: 0.5rem 1rem; background: #333; color: #fff; text-decoration: none;">Get Started</a>
+    <a href="#contact" class="btn-add-section">Get Started</a>
   </section>
 
   <!-- Features Section -->
@@ -116,10 +128,36 @@
     </div>
   </section>
 
+  <!-- Button to Add New Section -->
+  <div class="container">
+    <button class="btn-add-section" onclick="addNewSection()">Add Another Section</button>
+  </div>
+
+  <!-- Container for New Sections -->
+  <div id="new-sections-container" class="container"></div>
+
   <!-- Footer -->
   <footer>
     <p>&copy; 2024 Landing Page. All Rights Reserved.</p>
   </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function addNewSection() {
+      // Create a new div element
+      const newSection = document.createElement("div");
+      newSection.classList.add("new-section");
+
+      // Add content to the new section
+      newSection.innerHTML = `
+        <h3>New Section</h3>
+        <p>This is a dynamically added section. You can add as many as you like!</p>
+      `;
+
+      // Append the new section to the container
+      document.getElementById("new-sections-container").appendChild(newSection);
+    }
+  </script>
 
 </body>
 </html>
