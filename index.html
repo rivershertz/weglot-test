@@ -149,21 +149,39 @@
 
   <!-- JavaScript -->
   <script>
-    function addNewSection() {
-      // Create a new div element
-      const newSection = document.createElement("div");
-      newSection.classList.add("new-section");
+  let sectionCount = 1;
 
-      // Add content to the new section
-      newSection.innerHTML = `
-        <h3>New Section</h3>
-        <p>This is a dynamically added section. You can add as many as you like!</p>
-      `;
+  // Array of unique content for each new section
+  const sectionContents = [
+    { title: "Explore New Horizons", description: "Discover uncharted territories and push your limits with us!" },
+    { title: "Achieve Greatness", description: "Empower yourself to reach new heights and unlock potential." },
+    { title: "Innovation at Its Core", description: "We innovate to simplify, inspire, and create new possibilities." },
+    { title: "Unmatched Support", description: "Our team is here to guide you every step of the way." },
+    { title: "Simplicity Redefined", description: "We make complex things simple, so you can focus on what matters." },
+    { title: "Empowering Change", description: "Together, we can drive change and make a lasting impact." }
+  ];
 
-      // Append the new section to the container
-      document.getElementById("new-sections-container").appendChild(newSection);
-    }
-  </script>
+  function addNewSection() {
+    // Get content for the new section
+    const content = sectionContents[(sectionCount - 1) % sectionContents.length];
+
+    // Create a new div element
+    const newSection = document.createElement("div");
+    newSection.classList.add("new-section");
+
+    // Add unique content to the new section
+    newSection.innerHTML = `
+      <h3>${content.title}</h3>
+      <p>${content.description}</p>
+    `;
+
+    // Append the new section to the container
+    document.getElementById("new-sections-container").appendChild(newSection);
+
+    // Increment the section count
+    sectionCount++;
+  }
+</script>
 
 </body>
 </html>
